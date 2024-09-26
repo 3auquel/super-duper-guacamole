@@ -62,6 +62,33 @@
 // console.log(incr++);
 // console.log(decr--);
 // console.log(3 === 2);
-let isChecker = true,
-isCloce = false;
-console.log(isChecker || isCloce);
+// let isChecker = true,
+// isCloce = false;
+// console.log(isChecker || isCloce);
+ let num = 50;
+//  if (num <49) {
+//     console.log("false")
+//  } else if (num > 100) {
+//     console.log("a lot off")
+
+//  } else {
+//     console.log('true!')
+//  }
+//  (num==50) ? console.log('true') : console.log('false');
+ switch (num) {
+    case num <49:
+        console.log('true');
+        break;
+    case num > 100:
+        console.log('a lot of');
+        break;
+    case num > 80:
+        console.log("a lot!");
+        break;
+    case 50:
+        console.log("trueee");
+        break;
+    default:
+        console.log('smth wrong');
+        break;
+ }

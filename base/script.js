@@ -65,7 +65,7 @@
 // let isChecker = true,
 // isCloce = false;
 // console.log(isChecker || isCloce);
- let num = 50;
+//  let num = 50;
 //  if (num <49) {
 //     console.log("false")
 //  } else if (num > 100) {
@@ -75,20 +75,45 @@
 //     console.log('true!')
 //  }
 //  (num==50) ? console.log('true') : console.log('false');
- switch (num) {
-    case num <49:
-        console.log('true');
-        break;
-    case num > 100:
-        console.log('a lot of');
-        break;
-    case num > 80:
-        console.log("a lot!");
-        break;
-    case 50:
-        console.log("trueee");
-        break;
-    default:
-        console.log('smth wrong');
-        break;
- }
+//  switch (num) {
+//     case num <49:
+//         console.log('true');
+//         break;
+//     case num > 100:
+//         console.log('a lot of');
+//         break;
+//     case num > 80:
+//         console.log("a lot!");
+//         break;
+//     case 50:
+//         console.log("trueee");
+//         break;
+//     default:
+//         console.log('smth wrong');
+//         break;
+//  }
+let num =50;
+// while(num < 55 ){
+//     console.log(num);
+//     num++;
+
+// }
+// do{
+//     console.log(num);
+//     num++;
+
+// }
+// while(num<55)
+// for (let i=1; i<8; i++){
+//     if (i==6){
+//        continue;
+//     }
+//     console.log(i);
+// }
+// console.log([ ] + false - null + true);
+// let y = 1; let x = y = 2; alert(x);
+// console.log([ ] + 1 + 2);
+// alert( 2 && 1 && null && 0 && undefined);
+// alert( null || 2 && 3 || 4 );
+alert( 0 || "" || 2 || undefined || true || falsе );
+let x = 5; alert( ++x );

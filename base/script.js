@@ -92,7 +92,7 @@
 //         console.log('smth wrong');
 //         break;
 //  }
-let num =50;
+let num = 50;
 // while(num < 55 ){
 //     console.log(num);
 //     num++;
@@ -115,5 +115,6 @@ let num =50;
 // console.log([ ] + 1 + 2);
 // alert( 2 && 1 && null && 0 && undefined);
 // alert( null || 2 && 3 || 4 );
-alert( 0 || "" || 2 || undefined || true || falsе );
-let x = 5; alert( ++x );
+alert(0 || "" || 2 || undefined || true || falsе);
+let x = 5;
+alert(++x);

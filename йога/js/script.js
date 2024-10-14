@@ -39,15 +39,18 @@ window.addEventListener('DOMContentLoaded', function () {
     };
 
     //timer
-
-    let deadline = '2024-10-09';
+    let deadline = '2024-10-01';
+   
 
     function getTimeRemaining(endtime) {
-        let t = Date.parse(endtime) - Date.parse(new Date()),
-            seconds = Math.floor((t / 1000) % 60),
-            minutes = Math.floor((t / 1000 / 60) % 60),
-            hours = Math.floor(t / (1000 * 60 * 60));
-        // days = Math.floor((t/1000/60/60)%24); расчет для количества дней
+        let t = Date.parse(endtime) - Date.parse(new Date());
+           
+        
+       let seconds = Math.floor((t / 1000) % 60),
+        minutes = Math.floor((t / 1000 / 60) % 60),
+        hours = Math.floor(t / (1000 * 60 * 60));
+    // days = Math.floor((t/1000/60/60)%24); расчет для количества дней
+
         return {
             "total": t,
             'hours': hours,
@@ -61,7 +64,7 @@ window.addEventListener('DOMContentLoaded', function () {
         let timer = document.getElementById(id),
             hours = timer.querySelector('.hours'),
             minutes = timer.querySelector('.minutes'),
-            seconds = timer.querySelector('.seconds');
+            seconds = timer.querySelector('.seconds'),
         timeInterval = setInterval(updateClock, 1000);
 
         function updateClock() {
@@ -82,11 +85,45 @@ window.addEventListener('DOMContentLoaded', function () {
                 hours.textContent = '00',
                     minutes.textContent = '00',
                     seconds.textContent = '00';
+                    
             }
         }
 
 
     }
+    
     tabSwitcher(`info-header-tab`, `info-header`, `info-tabcontent`);
     setClock('timer', deadline);
+
+    //modal
+    let more = document.querySelector('.more'),
+        overlay = document.querySelector('.overlay'),
+        close = document.querySelector('.popup-close'),
+        descBtns = document.getElementsByClassName('description-btn');
+       
+       
+        function showOverlay() {
+            overlay.style.display = 'block';
+            this.classList.add('more-splash');
+            document.body.style.overflow = 'hidden';
+        }
+
+
+
+
+        more.addEventListener('click', showOverlay);
+        for (let i = 0; i < descBtns.length; i++) {
+            descBtns[i].addEventListener('click', showOverlay);
+        }
+        close.addEventListener('click', function(){
+            overlay.style.display = 'none';
+            more.classList.remove('more-splash');
+            document.body.style.overflow= '';
+        });
+
+       
+       
+
+        
+      
 });

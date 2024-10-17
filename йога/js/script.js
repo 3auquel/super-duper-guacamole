@@ -121,7 +121,25 @@ window.addEventListener('DOMContentLoaded', function () {
             document.body.style.overflow= '';
         });
 
-       
+       //form
+       let message = {
+        loading: 'Загрузка...',
+        success: 'Спасибо! Скоро мы с вами свяжемся!',
+        failute: 'Что-то пошло не так...'
+       };
+       let form = document.querySelector('.main-form'),
+       input = form.getElementsByTagName('input'),
+       statusMsg = document.createElement('div');
+       statusMsg.classList.add('status');
+       form.addEventListener('submit', function(e){
+        e.preventDefault();
+        form.appendChild(statusMsg);
+        let request = new XMLHttpRequest();
+        request.open('POST','server.php');
+        request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+        let formData = new FormData(form);
+        request.send(formData);
+       });
        
 
         

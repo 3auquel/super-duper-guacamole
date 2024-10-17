@@ -40,16 +40,16 @@ window.addEventListener('DOMContentLoaded', function () {
 
     //timer
     let deadline = '2024-10-01';
-   
+
 
     function getTimeRemaining(endtime) {
         let t = Date.parse(endtime) - Date.parse(new Date());
-           
-        
-       let seconds = Math.floor((t / 1000) % 60),
-        minutes = Math.floor((t / 1000 / 60) % 60),
-        hours = Math.floor(t / (1000 * 60 * 60));
-    // days = Math.floor((t/1000/60/60)%24); расчет для количества дней
+
+
+        let seconds = Math.floor((t / 1000) % 60),
+            minutes = Math.floor((t / 1000 / 60) % 60),
+            hours = Math.floor(t / (1000 * 60 * 60));
+        // days = Math.floor((t/1000/60/60)%24); расчет для количества дней
 
         return {
             "total": t,
@@ -65,7 +65,7 @@ window.addEventListener('DOMContentLoaded', function () {
             hours = timer.querySelector('.hours'),
             minutes = timer.querySelector('.minutes'),
             seconds = timer.querySelector('.seconds'),
-        timeInterval = setInterval(updateClock, 1000);
+            timeInterval = setInterval(updateClock, 1000);
 
         function updateClock() {
             let t = getTimeRemaining(endtime);
@@ -85,13 +85,13 @@ window.addEventListener('DOMContentLoaded', function () {
                 hours.textContent = '00',
                     minutes.textContent = '00',
                     seconds.textContent = '00';
-                    
+
             }
         }
 
 
     }
-    
+
     tabSwitcher(`info-header-tab`, `info-header`, `info-tabcontent`);
     setClock('timer', deadline);
 
@@ -100,48 +100,87 @@ window.addEventListener('DOMContentLoaded', function () {
         overlay = document.querySelector('.overlay'),
         close = document.querySelector('.popup-close'),
         descBtns = document.getElementsByClassName('description-btn');
-       
-       
-        function showOverlay() {
-            overlay.style.display = 'block';
-            this.classList.add('more-splash');
-            document.body.style.overflow = 'hidden';
-        }
+
+
+    function showOverlay() {
+        overlay.style.display = 'block';
+        this.classList.add('more-splash');
+        document.body.style.overflow = 'hidden';
+    }
 
 
 
 
-        more.addEventListener('click', showOverlay);
-        for (let i = 0; i < descBtns.length; i++) {
-            descBtns[i].addEventListener('click', showOverlay);
-        }
-        close.addEventListener('click', function(){
-            overlay.style.display = 'none';
-            more.classList.remove('more-splash');
-            document.body.style.overflow= '';
-        });
+    more.addEventListener('click', showOverlay);
+    for (let i = 0; i < descBtns.length; i++) {
+        descBtns[i].addEventListener('click', showOverlay);
+    }
+    close.addEventListener('click', function () {
+        overlay.style.display = 'none';
+        more.classList.remove('more-splash');
+        document.body.style.overflow = '';
+    });
 
-       //form
-       let message = {
+
+    //form
+    let message = {
         loading: 'Загрузка...',
         success: 'Спасибо! Скоро мы с вами свяжемся!',
-        failute: 'Что-то пошло не так...'
-       };
-       let form = document.querySelector('.main-form'),
-       input = form.getElementsByTagName('input'),
-       statusMsg = document.createElement('div');
-       statusMsg.classList.add('status');
-       form.addEventListener('submit', function(e){
-        e.preventDefault();
-        form.appendChild(statusMsg);
-        let request = new XMLHttpRequest();
-        request.open('POST','server.php');
-        request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-        let formData = new FormData(form);
-        request.send(formData);
-       });
-       
+        failure: 'Что-то пошло не так...'
+    };
 
-        
-      
+
+    // let form = document.querySelector('.main-form'),
+    let forms = document.querySelectorAll('form'),
+        // input = forms.getElementsByTagName('input'),
+        // contactform = document.querySelector('contact'),
+        // mailform = contactform.getElementsByTagName('input'),
+        statusMsg = document.createElement('div');
+
+
+    statusMsg.classList.add('status');
+    forms.forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            let input = form.getElementsByTagName('input');
+            form.appendChild(statusMsg);
+
+            let request = new XMLHttpRequest();
+            request.open('POST', 'server.php');
+            request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+
+            let formData = new FormData(form);
+
+
+            let obj = {};
+
+
+            formData.forEach(function (value, key) {
+                obj[key] = value;
+
+            });
+            let json = JSON.stringify(obj);
+
+            request.send(json);
+
+
+
+
+            request.addEventListener('readystatechange', function () {
+                if (request.readyState < 4) {
+                    statusMsg.innerHTML = message.loading;
+                } else if (request.readyState === 4 && request.status == 200) {
+                    statusMsg.innerHTML = message.success;
+                } else {
+                    statusMsg.innerHTML = message.failure;
+                }
+
+            });
+
+            for (let i = 0; i < input.length; i++) {
+                input[i].value = '';
+            }
+        });
+
+    });
 });

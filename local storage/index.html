@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        .login-container h2 {
+            margin-bottom: 20px;
+        }
+        .login-container input[type="email"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .login-container input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .login-container button {
+            background-color: #337ab7;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            cursor: pointer;
+        }
+        .login-container button:hover {
+            background-color: #286090;
+        }
+        .change-form-btn {
+            background-color: #5bc0de;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        .change-form-btn:hover {
+            background-color: #31b0d5;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Please login</h2>
+        <form>
+            <input type="email" placeholder="Email Address" required>
+            <input type="password" placeholder="Password" required>
+            <div style="text-align: left;">
+                <input type="checkbox" id="rememberMe">
+                <label for="remember-me">Remember me</label>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <button class="change-form-btn">Change form</button>
+    </div>
+
+    <script src="script.js"> </script>
+</body>
+</html>

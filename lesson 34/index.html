@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+    background: linear-gradient(to right, #fff3d9, #f7e18e); /* фон с градиентом */
+    font-family: Arial, sans-serif;
+}
+
+.list {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.list-item {
+    margin: 0 10px;
+    padding: 10px 20px;
+    background-color: #d3d3d3;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.list-item:hover {
+    background-color: #bbb;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image {
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
+    margin: 0 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+    </style>
+</head>
+<body>
+    <div class="list">
+        <button class="list-item"> первый</button>
+        <button class="list-item"> второй</button>
+        <button class="list-item"> третий </button>
+        <button class="list-item"> четвертый</button>
+        <button class="list-item">пятый</button>
+    </div>
+
+    <div class="wrapper">
+        <img src="https://masterpiecer-images.s3.yandex.net/b2d91936767a11eeb11ee6d39d9a42a4:upscaled" alt="1" class="image">
+        <img src="https://trikky.ru/wp-content/blogs.dir/1/files/2023/03/23/zyro-image-11.jpg" alt="1" class="image">
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="script.js"> </script>
+</body>
+</html>
